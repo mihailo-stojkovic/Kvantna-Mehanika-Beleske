@@ -4,7 +4,9 @@
 % \tikzstyle{NAME}=[PROPERTY LIST]
 
 % Node styles
+\tikzstyle{new style 0}=[fill=white, draw=black, shape=circle]
 
 % Edge styles
 \tikzstyle{basic}=[-, fill=none, draw=black]
 \tikzstyle{point}=[->]
+\tikzstyle{boundary}=[-, fill={rgb,255: red,207; green,207; blue,207}, draw={rgb,255: red,207; green,207; blue,207}]
