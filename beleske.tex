@@ -19,9 +19,21 @@
 \usepackage{empheq}
 \usepackage[most]{tcolorbox}
 \usepackage{hyperref}
+\usepackage{tikzsymbols}
+\usepackage[makeroom]{cancel}
+\usepackage{lmodern}
 %Boxed eqns
 \newcommand{\boxedeq}[1]{\begin{empheq}[box={\fboxsep=6pt\fbox}]{align} #1\end{empheq}}
+\newtcbox{\boxzadatak}[1][]{%
+	nobeforeafter, math upper, tcbox raise base,
+	enhanced, colframe=blue!30!black,
+	colback=blue!30, boxrule=1pt,
+	#1}
 
+\tcbuselibrary{theorems}
+\newtcbtheorem[number within=section]{zadatak}{Zadatak}%
+{colframe=blue!50!black,colback=blue!5,
+	colbacktitle=blue!50,colupper=red!35!black,fonttitle=\bfseries}{zz}
 \allsectionsfont{\normalfont \bfseries} % Make all sections centered, the default font and small caps
 \usepackage{enumerate}
 \usepackage{pythonhighlight}
@@ -53,6 +65,7 @@
 \newtheorem{conj}[thm]{Conjecture}
 \newtheorem{quest}[thm]{Question}
 
+
 \theoremstyle{definition}
 \newtheorem{defn}[thm]{Definition}
 \newtheorem{defns}[thm]{Definitions}
@@ -62,7 +75,8 @@
 \newtheorem{notn}[thm]{Notation}
 \newtheorem{notns}[thm]{Notations}
 \newtheorem{addm}[thm]{Addendum}
-\newtheorem{exer}[thm]{Exercise}
+\newtheorem{zad}[thm]{Zadatak}
+
 
 \theoremstyle{remark}
 \newtheorem{rem}[thm]{Remark}
@@ -150,7 +164,7 @@
 
 
 
-
+\renewcommand\proofname{Решење}
 \begin{document}
 \justifying 
 \maketitle
@@ -177,7 +191,7 @@
 	\label{eqn:talas_u_desno}\psi_1(x,t)&=A_1e^{i(kx-\omega t)}\\
 	\label{eqn:talas_u_levo}\psi_2(x,t)&=B_1e^{-i(kx-\omega t)} 
 \end{align}
-и заправо, једначина (\ref{eqn:talas_u_desno}) представља талас који се креће на десно, а једначина (\ref{eqn:talas_u_levo}) представља талас који се креће на лево.
+и заправо, једначина (\ref{eqn:talas_u_desno}) представља талас који се креће на десно, а једначина (\ref{eqn:talas_u_levo}) представља талас који се креће на лево\footnote{Смер кретања таласа можемо одредити преко \hyperref[]{струје вероватноће}}.
 
 \begin{wrapfigure}{L}{0.5\textwidth}
 	\centering
@@ -233,6 +247,98 @@
 \subsection*{Слободна честица на полубесконачном домену}
 \hrule
 \vspace{1em}
+Није нигде експлицитно поменуто у претходном делу, али у квантној сматрамо да најмања могућа енергија која честица може да поседује је једнака минималној потенцијалној енергији. С обзиром да потенцијална енергија може да се постави увек тако да јој минимална енергија буде 0, сматрамо да је $E>0$.\par
+
+Посматрамо сада потенцијалну енергију као на слици (\ref{fig:bolubeskonacni_domen}). Аналитички би то могли да запишемо као:
+\begin{equation}
+	U(x) = \left\{ \begin{array}{rcl}
+	0 & \mbox{,}
+	& x>0 \\ 
+	\infty & \mbox{,} & x\leq0
+\end{array}\right.
+\end{equation}\par
+За овако дефинисану потенцијалну енергију имамо само (једноструко дегенерисани) континуални спектар. Али, пре него што решимо овај проблем, можда прво мало да га преформулишемо на такав начин да обухватимо још један случај.
+\begin{wrapfigure}{l}{0.3\textwidth}
+	\centering
+	\includegraphics[width=0.3\textwidth]{polubeskonacni_domen.png}
+	\caption{}
+	\label{fig:bolubeskonacni_domen}
+\end{wrapfigure}
+
+
+
+Преформулисаћемо га тако да потенцијална баријера није бесконачна, већ коначна. Самим тим, када решимо тај проблем, можемо касније да пустимо да висина баријере тежи бесконачности и бум, вратили смо се на првобитни проблем. С обзиром да нам потенцијална енергија сада изгледа овако
+\begin{equation}
+	U(x) = \left\{ \begin{array}{rcl}
+		0 & \mbox{,}
+		& x>0 \\ 
+		U_0\in\R^+ & \mbox{,} & x\leq0
+	\end{array}\right.
+\end{equation}
+или као на слици (\ref{fig:konacna_barijera}). Сада, имамо две могућности за опсег енергије: или је $E\in(0, U_0)$ или је $E>U_0$. Посматрамо први случај и то када је честица унутар баријере, то јест, $x\in(-\infty, 0)$. Шредингерова једначина онда има облик:
+
+\begin{equation*}
+	-\frac{\hbar^2}{2m}\frac{d^2\psi}{dx^2}+U_0\psi=E\psi
+\end{equation*}\par
+Увођењем смене $\gamma^2\equiv\frac{2m(U_0-E)}{\hbar^2}$ добијамо следећи облик диференцијалне једначине\footnote{Слично као код једначине (\ref{eqn:sred_k}), једначина (\ref{eqn:sred_gamma}) је јако карактеристична и константно се враћамо на њу. Из тог разлога где год се појави симбол $\gamma$(на предавањима се углваном обележава са капа: $\kappa$, али је мени то слово мало незграпно, јер јако личи на $k$, тако да га замењујем са гама), сматрамо да је на исти начин дефинисан}:
+\boxedeq{\label{eqn:sred_gamma}\psi'' - \gamma^2\psi=0}
+Тада решење једначине може се написати у облику:
+\begin{equation}
+	\psi(x)=Ae^{\gamma x} + Be^{-\gamma x}
+\end{equation}
+\begin{wrapfigure}{r}{0.3\textwidth}
+	\centering
+	\includegraphics[width=0.3\textwidth]{konacna_barijera.png}
+	\caption{}
+	\label{fig:konacna_barijera}
+\end{wrapfigure}\par
+Како би уопште могли да нормирамо било коју функцију, она мора "нестати" (бити једнака нули) када $|x|\rightarrow\infty$. Пошто сагледавамо негативне вредности координате у овом случају, функција мора бити једнака нули када тежимо ка минус бесконачности. Одатле видимо да члан уз $B$ дивергира, тако да нам је први услов $B=0$.\par Ово доводи до мало чудног феномена. У класичној механици знамо да за потенцијал овог облика ми не бисмо имали решење за енергију унутар баријере, али овде оно постоји. Што је још бизарније, при почецима баријере таласна функција има ненулту вредност и како се удаљавамо од координатног почетка, све је мања и мања вероватноћа да наћемо честицу у том домену. Корак даље би било посматрање члана $\gamma$. Из дефиниције видимо да што је енергија ближа вредности $U_0$, то је фактор мањи, што само значи да што нам је енергија ближа том прагу, то је већа вероватноћа да ми наћемо честицу у баријери. Језиво...\par
+Гурамо сада баријеру до бесконачности, то јест, $U_0\rightarrow\infty\implies\gamma\rightarrow\infty$. Због тога што нам је координата негативна нам следи да у лимесу $\psi\rightarrow0$. Ово ће нам послужити за касније јер знамо која је вредност функције у 0 (битно нам је ово јер функција мора бити непрекидна). Додатно, при оваквим трансформацијама, губимо један услов, а то је услов непрекидности првог извода (због бесконачног скока потенцијалне баријере).\par
+Гледамо сада случај када је $x>0$. Разматрање је идентично случају који смо разматрали за слободну честицу на почетку, тако да можемо усвојити исто решење. Бирамо тригонометријски облик таласне функције.
+\begin{equation*}
+	\psi(x)=C\sin(kx) + D\cos(kx)
+\end{equation*}
+Из услова да $\psi(0)=0$ добијамо услов $D=0$. Феноменално! То значи да таласну функцију онда можемо да опишемо као
+\begin{equation}
+	\psi(x) = \left\{ \begin{array}{rcl}
+		0 & \mbox{,}
+		& x\leq0 \\ 
+		C\sin(kx) & \mbox{,} & x>0
+	\end{array}\right.
+\end{equation}
+Што значи да смо решили проблем? Одговор је: за мало... Ствар је што овако дефинисана таласна функција не може да се нормира \Sadey. Тако да враћамо се на стару добру технику - постављамо бесконачну баријеру од координате $L$ и касније је пуштамо да тежи бесконачности. Услов нормираности се онда своди на:
+\begin{align*}
+	&\int_{0}^{L}|\psi(x)|^2dx = 1\\
+	&C^2\int_{0}^{L}\sin^2(kx)dx=1\\
+	&C^2\int_{0}^{L}\frac{1-\cos(2kx)}{2}dx=1\\
+	&C^2\left[\frac{L}{2}-\frac{1}{4k}\sin(2kL)\right]=1\\
+	&C^2\left[\frac{L}{2}-\frac{1}{2k}\sin(kL)\cos(kL)\right]=1\\
+	&C^2\left[\frac{L}{2}-\frac{1}{2k}\cancelto{0}{\sin(kL)}\cos(kL)\right]=1\\
+	&C^2\cdot\frac{L}{2}=1\implies C=\sqrt{\frac{2}{L}}
+\end{align*}
+У претпоследњем реду синус је нула јер представља таласну функцију на граници баријере, што знамо да је 0. Коначно, добијамо решење таласне функције
+\begin{equation}\label{eqn:talasna_jed_polu_besk}
+	\psi(x) = \left\{ \begin{array}{rcl}
+		0 & \mbox{,}
+		& x\leq0 \\ 
+		\sqrt{\frac{2}{L}}\sin(kx) & \mbox{,} & x>0 \wedge L\rightarrow\infty
+	\end{array}\right.
+\end{equation}
+Као и у претходним случајевима, док је $ $ коначно, спектар енергија је дискретизован. Једино у граничном случају добијамо континуални спектар.
+\begin{zadatak}{Енергетски спектар слободне честице у полубесконачном домену}{}
+	Одредити енергетски спектар таласне једначине (\ref{eqn:talasna_jed_polu_besk}).
+\end{zadatak}
+\begin{proof}
+	dskafjdkasjfksadjfk
+\end{proof}
+
+\vspace{1em}
+\hrule
+\subsection*{Коначна јама са бесконачним зидовима}
+\hrule
+\vspace{1em}
+Можда и најпознатији \textsf{\textit{mainstream}} проблем из квантне, на енглеском познат као \textbf{Particle in a box}.
+\newpage
 \section{Предавање - 10.3.2023.}
 \section{Предавање - 22.3.2023.}
 \section{Предавање - 24.3.2023.}
@@ -246,6 +352,8 @@
 
 
 \appendix
+\section{Струја вероватноће}
+
 \section{Услов нормираности}\label{sec:uslov_normiranosti}
 Услов нормираности се своди на услов да je функција $f$ на задатом интервалу $(a,b)$ квадратно интеграбилна: \begin{equation*}
 	\int_{a}^{b}|f|^2dx<\infty
