@@ -3,6 +3,8 @@
 \usepackage[T1]{fontenc} % Use 8-bit encoding that has 256 glyphs
 %\usepackage{mathpazo} % Use the Adobe Utopia font for the document - comment this line to return to the LaTeX default
 \usepackage[english, serbianc]{babel} % English language/hyphenation
+
+
 \usepackage{amsmath,amsfonts,amsthm, amssymb} % Math packages
 \usepackage{pgf,tikz}
 \usetikzlibrary{positioning,matrix,arrows}
@@ -19,6 +21,11 @@
 \usepackage{empheq}
 \usepackage[most]{tcolorbox}
 \usepackage{hyperref}
+\hypersetup{
+	colorlinks = true,
+}
+
+\usepackage{mdframed}
 \usepackage{tikzsymbols}
 \usepackage[makeroom]{cancel}
 \usepackage{lmodern}
@@ -84,6 +91,7 @@
 \newtheorem{warn}[thm]{Warning}
 \newtheorem{sch}[thm]{Scholium}
 
+
 \newcommand{\bra}[1]{\left(#1\right)}
 \newcommand{\sbra}[1]{\left[#1\right]}
 \newcommand{\Mod}[1]{\ (\text{mod}\ #1)}
@@ -91,55 +99,55 @@
 \newcommand{\R}{\mathbb{R}}
 \newcommand{\N}{\mathbb{N}}
 \newcommand{\Z}{\mathbb{Z}}
-\newcommand{\mZ}{\mathcal{Z}}
+%\newcommand{\mZ}{\mathcal{Z}}
 \renewcommand{\C}{\mathbb{C}}
 \newcommand{\Q}{\mathbb{Q}}
-\newcommand{\F}{\mathbb{F}}
-\newcommand{\bA}{\mathbb{A}}
-\newcommand{\bH}{\mathbb{H}}
+%\newcommand{\F}{\mathbb{F}}
+%\newcommand{\bA}{\mathbb{A}}
+%\newcommand{\bH}{\mathbb{H}}
 \newcommand{\one}{\mathbb{1}}
-\newcommand{\mC}{\mathcal{C}}
-\newcommand{\mO}{\mathcal{O}}
-\newcommand{\mR}{\mathcal{R}}
-\newcommand{\mS}{\mathcal{S}}
-\newcommand{\lp}{{\mathfrak{p}}}
-\renewcommand{\P}{\mathbb{P}}
-\newcommand{\E}{\mathbb{E}}
-\DeclareMathOperator{\dist}{dist}
-\DeclareMathOperator{\aut}{Aut}
-\DeclareMathOperator{\gal}{Gal}
-\DeclareMathOperator{\var}{\textbf{var}}
-\DeclareMathOperator{\orb}{Orb}
-\DeclareMathOperator{\ff}{Frac}
-\DeclareMathOperator{\stab}{Stab}
-\DeclareMathOperator{\inn}{Inn}
-\DeclareMathOperator{\Ind}{Ind}
-\DeclareMathOperator{\Res}{Res}
-\DeclareMathOperator{\spn}{Span}
-\DeclareMathOperator{\out}{Out}
+%\newcommand{\mC}{\mathcal{C}}
+%\newcommand{\mO}{\mathcal{O}}
+%\newcommand{\mR}{\mathcal{R}}
+%\newcommand{\mS}{\mathcal{S}}
+%\newcommand{\lp}{{\mathfrak{p}}}
+%\renewcommand{\P}{\mathbb{P}}
+%\newcommand{\E}{\mathbb{E}}
+%\DeclareMathOperator{\dist}{dist}
+%\DeclareMathOperator{\aut}{Aut}
+%\DeclareMathOperator{\gal}{Gal}
+%\DeclareMathOperator{\var}{\textbf{var}}
+%\DeclareMathOperator{\orb}{Orb}
+%\DeclareMathOperator{\ff}{Frac}
+%\DeclareMathOperator{\stab}{Stab}
+%\DeclareMathOperator{\inn}{Inn}
+%\DeclareMathOperator{\Ind}{Ind}
+%\DeclareMathOperator{\Res}{Res}
+%\DeclareMathOperator{\spn}{Span}
+%\DeclareMathOperator{\out}{Out}
 \DeclareMathOperator{\im}{Im}
-\DeclareMathOperator{\rk}{rk}
-\DeclareMathOperator{\disc}{disc}
-\DeclareMathOperator{\tors}{Tors}
-\DeclareMathOperator{\Mor}{Mor}
-\DeclareMathOperator{\End}{End}
-\DeclareMathOperator{\Hom}{Hom}
-\DeclareMathOperator{\Nat}{Nat}
-\DeclareMathOperator{\spec}{Spec}
-\DeclareMathOperator{\ann}{Ann}
-\DeclareMathOperator{\ord}{ord}
-\DeclareMathOperator{\conjc}{Conj}
-\DeclareMathOperator{\Br}{Br}
-\DeclareMathOperator{\Tr}{Tr}
-\DeclareMathOperator{\Nm}{Nm}
-\DeclareMathOperator{\Char}{char}
+%\DeclareMathOperator{\rk}{rk}
+%\DeclareMathOperator{\disc}{disc}
+%\DeclareMathOperator{\tors}{Tors}
+%\DeclareMathOperator{\Mor}{Mor}
+%\DeclareMathOperator{\End}{End}
+%\DeclareMathOperator{\Hom}{Hom}
+%\DeclareMathOperator{\Nat}{Nat}
+%\DeclareMathOperator{\spec}{Spec}
+%\DeclareMathOperator{\ann}{Ann}
+%\DeclareMathOperator{\ord}{ord}
+%\DeclareMathOperator{\conjc}{Conj}
+%\DeclareMathOperator{\Br}{Br}
+%\DeclareMathOperator{\Tr}{Tr}
+%\DeclareMathOperator{\Nm}{Nm}
+%\DeclareMathOperator{\Char}{char}
 \newcommand{\norm}[1]{\left\lVert #1 \right\rVert}
 \newcommand{\inp}[2]{\left\langle #1, #2 \right\rangle}
-\newcommand{\shreq}[2]{-\frac{\hbar^2}{2m}\frac{\partial^2 #1}{\partial #2^2} + U(#2) #1 =E #1}
-\newcommand{\tshreq}[2]{i\hbar\frac{\partial #1}{\partial t^2} = -\frac{\hbar^2}{2m}\frac{\partial^2 #1}{\partial #2^2} + U(#2) #1}
+\newcommand{\shreq}[2]{-\frac{\hb^2}{2m}\frac{\partial^2 #1}{\partial #2^2} + U(#2) #1 =E #1}
+\newcommand{\tshreq}[2]{i\hb\frac{\partial #1}{\partial t^2} = -\frac{\hb^2}{2m}\frac{\partial^2 #1}{\partial #2^2} + U(#2) #1}
 \newcommand{\kpsi}{\psi^{''}+k\psi=0}
 \def \v {\vspace{0.2cm}}
-
+\newcommand{\hb}{\hslash}
 \geometry{
 	left=13mm, % left margin
 	textwidth=130mm, % main text block
@@ -163,8 +171,6 @@
 	{}{\noindent\rule{\textwidth}{0.5pt}\\thesection\\\noindent\rule{\textwidth}{0.5pt} }{1em}{}[{\titlerule[0.8pt]}]
 
 
-
-\renewcommand\proofname{Решење}
 \begin{document}
 \justifying 
 \maketitle
@@ -178,7 +184,7 @@
 \vspace{1em}
 Само предавање креће са тим да посматрамо стационарну Шредингерову једначину:
 	\boxedeq{\shreq{\psi}{x}}
-али у случају када је $U(x)=0$. Заменом $k^2\equiv\frac{2mE}{\hbar^2}$ у претходну једначину\footnote{Оваква смена се често појављује у курсу тако да после неког времена постане стандардно да када год се појави неко $k$ сматрамо да је једнако наведеном изразу} добијамо диференцијалну једначину:
+али у случају када је $U(x)=0$. Заменом $k^2\equiv\frac{2mE}{\hslash^2}$ у претходну једначину\footnote{Оваква смена се често појављује у курсу тако да после неког времена постане стандардно да када год се појави неко $k$ сматрамо да је једнако наведеном изразу} добијамо диференцијалну једначину:
 	\boxedeq{\label{eqn:sred_k}\kpsi}
 Решење ове диференцијалне једначине можемо изразити у два облика:
 \begin{enumerate}
@@ -213,7 +219,7 @@
 Начин на који ово решавамо је мало шкакљив. Претпоставимо да потенцијална енергија није свуда нула, већ само на интервалу $(-\frac{L}{2},\frac{L}{2})$. Ван тог интервала сматрамо да је потенцијална енергија бесконачна, то јест, да честица сигурно мора да се налази на овом интервалу. Ван овог интервала $\psi(x,t)=0$. Бирамо сада функцију (\ref{eqn:talas_u_desno}), без додате функције времена и проверавамо да ли сада можемо да је нормирамо.
 
 \begin{align*}
-	&\displaystyle\int_{-\infty}^{+\infty}|\psi_1|^2dx =1\\
+	&\displaystyle\int_{-\infty}^{+\infty}\norm{\psi_1}^2dx =1\\
 	&\displaystyle|A_1|^2\int_{-\frac{L}{2}}^{\frac{L}{2}}|e^{ikx}|^2dx= 1\\
 	&|A_1|^2 \cdot L = 1 \implies A_1 = \frac{1}{\sqrt{L}}
 \end{align*}
@@ -278,9 +284,9 @@
 или као на слици (\ref{fig:konacna_barijera}). Сада, имамо две могућности за опсег енергије: или је $E\in(0, U_0)$ или је $E>U_0$. Посматрамо први случај и то када је честица унутар баријере, то јест, $x\in(-\infty, 0)$. Шредингерова једначина онда има облик:
 
 \begin{equation*}
-	-\frac{\hbar^2}{2m}\frac{d^2\psi}{dx^2}+U_0\psi=E\psi
+	-\frac{\hb^2}{2m}\frac{d^2\psi}{dx^2}+U_0\psi=E\psi
 \end{equation*}\par
-Увођењем смене $\gamma^2\equiv\frac{2m(U_0-E)}{\hbar^2}$ добијамо следећи облик диференцијалне једначине\footnote{Слично као код једначине (\ref{eqn:sred_k}), једначина (\ref{eqn:sred_gamma}) је јако карактеристична и константно се враћамо на њу. Из тог разлога где год се појави симбол $\gamma$(на предавањима се углваном обележава са капа: $\kappa$, али је мени то слово мало незграпно, јер јако личи на $k$, тако да га замењујем са гама), сматрамо да је на исти начин дефинисан}:
+Увођењем смене $\gamma^2\equiv\frac{2m(U_0-E)}{\hb^2}$ добијамо следећи облик диференцијалне једначине\footnote{Слично као код једначине (\ref{eqn:sred_k}), једначина (\ref{eqn:sred_gamma}) је јако карактеристична и константно се враћамо на њу. Из тог разлога где год се појави симбол $\gamma$(на предавањима се углваном обележава са капа: $\kappa$, али је мени то слово мало незграпно, јер јако личи на $k$, тако да га замењујем са гама), сматрамо да је на исти начин дефинисан}:
 \boxedeq{\label{eqn:sred_gamma}\psi'' - \gamma^2\psi=0}
 Тада решење једначине може се написати у облику:
 \begin{equation}
@@ -308,7 +314,7 @@
 \end{equation}
 Што значи да смо решили проблем? Одговор је: за мало... Ствар је што овако дефинисана таласна функција не може да се нормира \Sadey. Тако да враћамо се на стару добру технику - постављамо бесконачну баријеру од координате $L$ и касније је пуштамо да тежи бесконачности. Услов нормираности се онда своди на:
 \begin{align*}
-	&\int_{0}^{L}|\psi(x)|^2dx = 1\\
+	&\int_{0}^{L}\norm{\psi(x)}^2dx = 1\\
 	&C^2\int_{0}^{L}\sin^2(kx)dx=1\\
 	&C^2\int_{0}^{L}\frac{1-\cos(2kx)}{2}dx=1\\
 	&C^2\left[\frac{L}{2}-\frac{1}{4k}\sin(2kL)\right]=1\\
@@ -324,20 +330,83 @@
 		\sqrt{\frac{2}{L}}\sin(kx) & \mbox{,} & x>0 \wedge L\rightarrow\infty
 	\end{array}\right.
 \end{equation}
-Као и у претходним случајевима, док је $ $ коначно, спектар енергија је дискретизован. Једино у граничном случају добијамо континуални спектар.
+Као и у претходним случајевима, док је $ $ коначно, спектар енергија је дискретизован. Једино у граничном случају добијамо континуални спектар.\par
+\begin{mdframed}
+	
 \begin{zadatak}{Енергетски спектар слободне честице у полубесконачном домену}{}
 	Одредити енергетски спектар таласне једначине (\ref{eqn:talasna_jed_polu_besk}).
 \end{zadatak}
-\begin{proof}
-	dskafjdkasjfksadjfk
+\begin{proof}[\unskip\nopunct]
+Решење:\par
+\lipsum[1-6]
 \end{proof}
 
+\end{mdframed}
 \vspace{1em}
 \hrule
 \subsection*{Коначна јама са бесконачним зидовима}
 \hrule
 \vspace{1em}
-Можда и најпознатији \textsf{\textit{mainstream}} проблем из квантне, на енглеском познат као \textbf{Particle in a box}.
+Можда и најпознатији \textsf{\textit{mainstream}} проблем из квантне, на енглеском познат као \textbf{Particle in a box}. Овај проблем решавамо у једној просторној димензији, али лако може да се генерализује за 3D. Крећемо од тога да нам је дата потенцијална енергија следећег облика:
+\begin{equation}
+	U(x) = \left\{ \begin{array}{rcl}
+		0 & \mbox{,}
+		& x\in(0,d) \\ 
+		\infty & \mbox{,} & x\notin(0,d)
+	\end{array}\right.
+\end{equation}
+Примећујемо да честица једино може да се нађе у задатом домену и да енергија честице мора бити већа од нуле. Постављамо Шредингерову једначину на стандардан начин у домену где је потенцијална енергија 0.
+\boxedeq{\kpsi}
+Решење записујемо у тригонометријском облику
+\begin{equation}\label{eqn:psi_trig}
+	\psi(x) = A\sin(kx) + B\cos(kx)
+\end{equation}
+Због непрекидности таласне функције знамо $0=\psi(0^-)=\psi(0^+)=\psi(0)$ тако да из једначине (\ref{eqn:psi_trig}) следи да је $B=0$. Сада посматрамо таласну функцију на другој баријери, у $x=d$.
+\begin{align*}
+	&0=\psi(d^+)=\psi(d^-)=\psi(d)&\\
+	\implies &A\sin(kd) = 0&\\
+	\implies &kd = n\pi,&n\in\N
+\end{align*}
+Последњи ред није у потпуности математички тачан ($n$ би требало да буде елемент скупа $\Z$), али постоји разлог због тога што је баш овако изабран. Прво, $n=0$ би био тривијалан случај где или не постоји јама или је енергија једнака нули. Друго, с обзиром да су $k$ и $d$ позитивни, следи да $n\nless0$. Ако квадрирамо последњу релацију и изразимо енергију, добијамо\footnote{Приметимо да разлика између суседних енергија $\Delta E_n = E_n - E_{n-1}\sim \frac{1}{d^2}$. Ако би се баријера бесконачно удаљавала, то јест, $d\rightarrow\infty$, суседне енергије су све ближе и у граничном случају добијамо континуалан спектар исти оном који смо добили у претходном проблему.}
+\begin{equation}\label{eqn:energija_kvantne_jame}
+	E_n = \frac{n^2\pi^2\hb^2}{2md^2}
+\end{equation}
+Додатно, можемо да заменимо последњу релацију у нашу таласну једначину и онда добијамо решење
+\begin{equation}
+	\psi(x) = \left\{ \begin{array}{rcl}
+		0 & \mbox{,}
+		& x\notin(0,d) \\ 
+		A\sin(\frac{n\pi}{d}x) & \mbox{,} & x\in(0,d)
+	\end{array}\right.
+\end{equation}\par
+Једино што је остало је да одредимо константу $A$. То одрећујемо преко услова нормираности таласне функције.
+\begin{align*}
+	\int_{-\infty}^{\infty}\norm{\psi(x)}^2dx=1\\
+	A^2\int_{0}^{d}\sin^2(\frac{n\pi}{d}x)dx=1\\
+	A^2\cdot\frac{d}{2}=1\implies A=\sqrt{\frac{2}{d}}
+\end{align*}\par
+\begin{wrapfigure}{L}{0.3\textwidth}
+	\centering
+	\label{fig:beskonacna_simetricna_jama}\includegraphics[width=0.3\textwidth]{beskonacna_jama.png}
+	\caption{Бесконачна симетрична потенцијална јама}
+\end{wrapfigure}
+Посматрамо сада идентичан проблем, само са помереним потенцијалом тако да се јама налази у интервалу $x\in(-\frac{d}{2},\frac{d}{2})$. Питање је сада да ли ћемо добити другачије решење и због чега би било ко нормалан променио проблем након што га је решио\footnote{Одговор је наравно не, решење остаје исто. Разлог за то је нешто што толико није обраћено у курсу, а то су инваријантности Шредингерове једначине под одрећеним трансформацијама. У овом случају имамо само транслацију координате, али у општем случају то може да се докаже за Галилејеву трансформацију. За додатно објашњење погледати материјал на овом  \href{https://en.wikipedia.org/wiki/User:Likebox/Schrodinger\#Galilean_invariance}{линку}}. Одговор лежи заправо у својству које се манифестује код таласних функција када имамо симетричну потенцијалну енергију.
+
+
+\begin{tcolorbox}[
+	colframe=black,colback=red!35!white]\label{box:paran_potencijal}
+	Ако је потенцијална енергија парна функција, онда су таласне функције или парне или непарне.
+\end{tcolorbox}
+С обзиром да нам је потенцијална коначна једино на интервалу $\left(-\frac{d}{2}, \frac{d}{2}\right)$, на том једино домену ћемо решавати Шредингерову једначину. Решавање се своди на исти случај као код једначине (\ref{eqn:sred_k}), тако да нам је решење у облику
+\begin{equation}
+	\psi(x) = A\sin(kx) + B\cos(kx)
+\end{equation}
+Према услову о парности потенцијалне енергије, разматраћемо засебно парна и непарна решења.\par
+Посматрајмо прво парна решења. Таласна функција је онда облика $\psi_p(x) = B_p\cos(kx)$. Из услова непрекидности знамо да $\psi_p\left(\frac{d}{2}\right)=0$. Одатле следи да $$\cos\left(k\frac{d}{2}\right)=0$$то јест, $$k_p=\frac{(2p-1)\pi}{d}$$\par Ако изразимо енергију преко новодобијеног $k_p$
+\begin{equation}\label{eqn:energija_parnih_stanja_kvantne_jame}
+	E_p = \frac{(2p-1)^2 \pi^2 \hb^2}{2md^2}
+\end{equation}
+Примећујемо да ова енергија одговара енергији из једначине (\ref{eqn:energija_kvantne_jame}) за непарне вредности $n$.
 \newpage
 \section{Предавање - 10.3.2023.}
 \section{Предавање - 22.3.2023.}
@@ -355,10 +424,10 @@
 \section{Струја вероватноће}
 
 \section{Услов нормираности}\label{sec:uslov_normiranosti}
-Услов нормираности се своди на услов да je функција $f$ на задатом интервалу $(a,b)$ квадратно интеграбилна: \begin{equation*}
-	\int_{a}^{b}|f|^2dx<\infty
+Услов нормираности се своди на услов да je функција $f$ квадратно интеграбилна: \begin{equation*}
+	\int_{-\infty}^{\infty}|f|^2dx<\infty
 \end{equation*}
-и да је на целом пољу $\R$ једнака 1. То произилази из Копенхагенове интерпретације квантне механике: "\textit{$|\psi|^2dx$ представља вероватноћу да се честица налази у домену $dx$, тако да честица се сигурно налази негде на целом простору}". 
-С обзиром да је Шредингерова једначина хомогена, решење ће нам увек бити нека функција $g$ поможена са неком константном $А$ тако да када одредимо интеграл од $|g|^2$, рецимо да је вредност интеграла $I$, потребно је само да поставимо $А=\frac{1}{\sqrt{I}}$. Прецизније, константа је одређена на овај начин до неког мултипликативног фактора $e^{i\alpha}$, где је $\alpha$ неки реалан број. Овај фактор се занемарује јер, иако то мења облик таласне функције са математичког аспекта, физички смисао остаје исти, јер ће при поновном нормирању да се изгуби. Због претходне дискусије увек узимамо да је $А$ реална позитивна константа.
+али тако да је на целом пољу $\R$ једнака 1. То произилази из Копенхагенове интерпретације квантне механике: "\textit{$\norm{\psi}^2dx$ представља вероватноћу да се честица налази у домену $dx$, тако да честица се сигурно налази негде на целом простору}". 
+С обзиром да је Шредингерова једначина хомогена, решење ће нам увек бити нека функција $g$ поможена са неком константном $A$ тако да када одредимо интеграл од $|g|^2$, рецимо да је вредност интеграла $I$, потребно је само да поставимо $A=\frac{1}{\sqrt{I}}$. Прецизније, константа је одређена на овај начин до неког мултипликативног фактора $e^{i\alpha}$, где је $\alpha$ неки реалан број. Овај фактор се занемарује јер, иако то мења облик таласне функције са математичког аспекта, физички смисао остаје исти, јер ће при поновном нормирању да се изгуби. Због претходне дискусије увек узимамо да је $A$ реална позитивна константа.
 
 \end{document}
